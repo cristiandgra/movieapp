@@ -16,7 +16,7 @@ const MovieCard: React.FC<MovieCardProps> = ({ movie }) => {
   const posterUrl = `https://image.tmdb.org/t/p/w500${movie.poster_path}`
 
   return (
-    <div className='p-4'>
+    <div data-testid='movie-card' className='p-4'>
       <Link to={`/movie/${movie.id}`}>
         <img src={posterUrl} alt={movie.title} className='w-full' />
       </Link>

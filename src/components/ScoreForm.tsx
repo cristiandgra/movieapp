@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { Movie, addMovie, addScore } from '../redux/slices/MovieSlice'
+import { addMovie, addScore } from '../redux/slices/MovieSlice'
 
 interface ScoreFormProps {
   movieId: number
@@ -36,6 +36,7 @@ const ScoreForm: React.FC<ScoreFormProps> = ({
       )
 
       dispatch(addScore({ movieId, score: { score, comment } }))
+
       setScore(null)
       setComment('')
     }

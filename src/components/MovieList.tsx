@@ -14,8 +14,8 @@ interface MovieListProps {
 
 const MovieList: React.FC<MovieListProps> = ({ movies }) => (
   <div className='grid grid-cols-4 gap-4'>
-    {movies.map((movie, index) => (
-      <MovieCard key={index} movie={movie} />
+    {movies.map((movie) => (
+      <MovieCard key={movie.id} movie={movie} data-testid='movie-card' />
     ))}
   </div>
 )
