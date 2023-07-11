@@ -4,28 +4,18 @@ import { useSelector } from 'react-redux'
 import ScoreForm from '../components/ScoreForm'
 import { fetchMovieDetail } from '../services/MovieService'
 import { MovieDetail } from '../types/movieTypes'
+import { RootState } from '../redux/store'
 
 interface RouteParams {
   [key: string]: string | undefined
   id?: string
 }
 
-interface Score {
-  score: number
-  comment: string
-}
-
-interface State {
-  scores: { [key: number]: Score[] }
-}
-
 const MovieDetailPage: React.FC = () => {
   const { id } = useParams<RouteParams>()
   const [movie, setMovie] = useState<MovieDetail | null>(null)
-
-  const scores = useSelector((state: State) =>
-    state.scores && id ? state.scores[parseInt(id)] || [] : []
-  )
+  const moviesState = useSelector((state: RootState) => state.movies)
+  const { movies } = moviesState
 
   useEffect(() => {
     if (id) {
@@ -36,6 +26,10 @@ const MovieDetailPage: React.FC = () => {
       fetchMovie()
     }
   }, [id])
+
+  const scores = id
+    ? movies.find((movie) => movie.id === parseInt(id))?.scores || []
+    : []
 
   return (
     <div className='bg-gray-100 min-h-screen py-8 px-4'>
@@ -49,13 +43,18 @@ const MovieDetailPage: React.FC = () => {
               className='w-full mb-4 rounded-lg shadow'
             />
             <p className='text-lg leading-relaxed mb-4'>{movie.overview}</p>
-            <ScoreForm movieId={id ? parseInt(id) : 0} />
+            <ScoreForm
+              movieId={id ? parseInt(id) : 0}
+              movieOverview={movie.overview}
+              movieTitle={movie.title}
+              moviePosterPath={movie.poster_path}
+            />
 
             <div className='mt-6'>
               {scores.length > 0 ? (
                 <div>
                   <h3 className='text-xl font-bold mb-2'>Opiniones:</h3>
-                  {scores.map((score, i) => (
+                  {scores.map((score: any, i: number) => (
                     <div key={i} className='bg-gray-200 p-4 rounded-lg mb-2'>
                       <p className='text-lg font-semibold'>
                         Puntuación: {score.score}

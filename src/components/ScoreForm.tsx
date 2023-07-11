@@ -1,12 +1,20 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { addScore } from '../redux/actions'
+import { Movie, addMovie, addScore } from '../redux/slices/MovieSlice'
 
 interface ScoreFormProps {
   movieId: number
+  movieTitle: string
+  moviePosterPath: string
+  movieOverview: string
 }
 
-const ScoreForm: React.FC<ScoreFormProps> = ({ movieId }) => {
+const ScoreForm: React.FC<ScoreFormProps> = ({
+  movieId,
+
+  moviePosterPath,
+  movieTitle
+}) => {
   const [score, setScore] = useState<number | null>(null)
   const [comment, setComment] = useState('')
   const dispatch = useDispatch()
@@ -15,13 +23,22 @@ const ScoreForm: React.FC<ScoreFormProps> = ({ movieId }) => {
     setScore((prevScore) => (prevScore === value ? null : value))
   }
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault()
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
     if (score !== null) {
-      dispatch(addScore(movieId, { score, comment }))
+      dispatch(
+        addMovie({
+          id: movieId,
+          title: movieTitle,
+          poster_path: moviePosterPath,
+          release_date: ''
+        })
+      )
+
+      dispatch(addScore({ movieId, score: { score, comment } }))
+      setScore(null)
+      setComment('')
     }
-    setScore(null)
-    setComment('')
   }
 
   const renderStars = () => {
