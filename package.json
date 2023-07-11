@@ -1,7 +1,7 @@
 {
   "name": "movieapp",
   "version": "0.1.0",
-  "homepage": "https://cristiandgra.github.io/movieapp/",
+  "homepage": "https://cristiandgra.github.io/movieapp",
   "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.5",
