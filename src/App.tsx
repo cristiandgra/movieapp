@@ -9,14 +9,12 @@ import MovieDetailPage from './pages/MovieDetailPage'
 function App() {
   return (
     <Provider store={store}>
-      <Router>
-        <Navbar />
-        <Routes>
-          <Route path='/' element={<SearchPage />} />
-          <Route path='/mylist' element={<MyListPage />} />
-          <Route path='/movie/:id' element={<MovieDetailPage />} />
-        </Routes>
-      </Router>
+      <Navbar />
+      <Routes>
+        <Route path='/' element={<SearchPage />} />
+        <Route path='/mylist' element={<MyListPage />} />
+        <Route path='/movie/:id' element={<MovieDetailPage />} />
+      </Routes>
     </Provider>
   )
 }
