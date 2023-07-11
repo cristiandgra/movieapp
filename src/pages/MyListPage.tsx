@@ -9,7 +9,17 @@ const MyListPage: React.FC = () => {
   return (
     <div className='p-4'>
       <h1 className='text-2xl mb-4'>My List</h1>
-      <MovieList movies={myList} />
+
+      {myList.length > 0 ? (
+        <MovieList movies={myList} />
+      ) : (
+        <div className='text-center'>
+          <p className='text-lg italic'>Todavía no hay ninguna pelicula.</p>
+          <p className='text-lg italic'>
+            ¡Añade una review para ir rellanando tu lista!
+          </p>
+        </div>
+      )}
     </div>
   )
 }
