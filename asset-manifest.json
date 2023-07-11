@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/cristiandgra.github.io/movieapp/static/css/main.d185964e.css",
+    "main.js": "/cristiandgra.github.io/movieapp/static/js/main.49b70ca1.js",
+    "static/js/787.5d5ea81f.chunk.js": "/cristiandgra.github.io/movieapp/static/js/787.5d5ea81f.chunk.js",
+    "index.html": "/cristiandgra.github.io/movieapp/index.html",
+    "main.d185964e.css.map": "/cristiandgra.github.io/movieapp/static/css/main.d185964e.css.map",
+    "main.49b70ca1.js.map": "/cristiandgra.github.io/movieapp/static/js/main.49b70ca1.js.map",
+    "787.5d5ea81f.chunk.js.map": "/cristiandgra.github.io/movieapp/static/js/787.5d5ea81f.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d185964e.css",
+    "static/js/main.49b70ca1.js"
+  ]
+}
